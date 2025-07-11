@@ -1,41 +1,31 @@
 {
   "name": "@autoweave/agents",
   "version": "1.0.0",
-  "description": "AutoWeave intelligent agents collection",
+  "description": "AutoWeave agent implementations and utilities",
   "main": "src/index.js",
+  "type": "module",
   "scripts": {
-    "test": "jest",
+    "test": "node --test",
     "lint": "eslint src/",
-    "start:debugging": "node src/debugging-agent.js",
-    "start:integration": "node src/integration-agent/index.js",
-    "start:self-awareness": "node src/self-awareness-agent.js"
-  },
-  "dependencies": {
-    "@autoweave/core": "^1.0.0",
-    "@autoweave/memory": "^1.0.0",
-    "axios": "^1.6.2",
-    "winston": "^3.11.0",
-    "express": "^4.18.2",
-    "openai": "^4.20.1",
-    "js-yaml": "^4.1.0",
-    "@langchain/community": "^0.0.10",
-    "@langchain/core": "^0.1.5",
-    "@langchain/openai": "^0.0.10",
-    "@qdrant/js-client-rest": "^1.7.0"
-  },
-  "devDependencies": {
-    "jest": "^29.7.0",
-    "eslint": "^8.54.0"
+    "start": "node src/index.js"
   },
   "keywords": [
     "autoweave",
     "agents",
     "ai",
-    "orchestration",
-    "debugging",
-    "integration",
-    "self-awareness"
+    "orchestration"
   ],
   "author": "AutoWeave Team",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "simple-git": "^3.25.0",
+    "swagger-parser": "^10.0.3",
+    "axios": "^1.7.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.56.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
 }

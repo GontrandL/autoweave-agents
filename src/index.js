@@ -1,39 +1,57 @@
 /**
  * AutoWeave Agents Module
- * 
- * This module provides a collection of intelligent agents for various tasks:
- * - Debugging Agent: OpenTelemetry-based intelligent debugging and diagnosis
- * - Integration Agent: Multi-service integration with LangChain orchestration
- * - Self-Awareness Agent: Genetic code tracking and self-modification capabilities
+ * Main entry point for all agent implementations
  */
 
-// Export all agents
-module.exports = {
-  // Main agents
-  DebuggingAgent: require('./debugging-agent'),
-  IntegrationAgent: require('./integration-agent'),
-  SelfAwarenessAgent: require('./self-awareness-agent'),
-  
-  // Integration agent components
-  GitOpsManager: require('./integration-agent/gitops-manager'),
-  LangChainOrchestrator: require('./integration-agent/langchain-orchestrator'),
-  MetricsCollector: require('./integration-agent/metrics-collector'),
-  OpenAPIParser: require('./integration-agent/openapi-parser'),
-  PydanticGenerator: require('./integration-agent/pydantic-generator'),
-  
-  // Agent utilities
-  createDebuggingAgent: (config) => {
-    const DebuggingAgent = require('./debugging-agent');
-    return new DebuggingAgent(config);
-  },
-  
-  createIntegrationAgent: (config) => {
-    const IntegrationAgent = require('./integration-agent');
-    return new IntegrationAgent(config);
-  },
-  
-  createSelfAwarenessAgent: (config) => {
-    const SelfAwarenessAgent = require('./self-awareness-agent');
-    return new SelfAwarenessAgent(config);
-  }
+// Core agents
+export { DebuggingAgent } from './agents/debugging-agent.js';
+export { SelfAwarenessAgent } from './agents/self-awareness-agent.js';
+
+// Integration agent and its components
+export { default as IntegrationAgent } from './agents/integration-agent/index.js';
+export { GitManager } from './agents/integration-agent/git-manager.js';
+export { DockerManager } from './agents/integration-agent/docker-manager.js';
+export { CICDPlatformManager } from './agents/integration-agent/cicd-platform-manager.js';
+export { SwaggerManager } from './agents/integration-agent/swagger-manager.js';
+
+// Hooks system (Claudia integration)
+export { hooksManager } from './hooks/claudia/hooksManager.ts';
+export * from './hooks/claudia/hooks.ts';
+
+// Utility scripts
+export const scripts = {
+  dbReader: './scripts/db_reader.py',
+  simpleDbReader: './scripts/simple_db_reader.py',
+  checkDbSync: './scripts/check-db-sync.py'
 };
+
+// Agent factory function
+export function createAgent(type, config = {}) {
+  switch (type) {
+    case 'debugging':
+      return new DebuggingAgent(config);
+    case 'self-awareness':
+      return new SelfAwarenessAgent(config);
+    case 'integration':
+      return new IntegrationAgent(config);
+    default:
+      throw new Error(`Unknown agent type: ${type}`);
+  }
+}
+
+// Export all agents as a collection
+export const agents = {
+  DebuggingAgent,
+  SelfAwarenessAgent,
+  IntegrationAgent
+};
+
+// Export agent types enum
+export const AgentTypes = {
+  DEBUGGING: 'debugging',
+  SELF_AWARENESS: 'self-awareness',
+  INTEGRATION: 'integration'
+};
+
+// Export version info
+export const version = '1.0.0';
