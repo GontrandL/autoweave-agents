@@ -1,0 +1,34 @@
+# Python dependencies for AutoWeave Agents
+
+# Core dependencies
+langchain>=0.1.0
+langchain-community>=0.0.10
+langchain-openai>=0.0.5
+openai>=1.0.0
+pydantic>=2.0.0
+pyyaml>=6.0
+aiohttp>=3.9.0
+fastapi>=0.104.0
+uvicorn>=0.24.0
+
+# Vector database
+qdrant-client>=1.7.0
+
+# Utilities
+numpy>=1.24.0
+pandas>=2.0.0
+python-dotenv>=1.0.0
+rich>=13.0.0
+
+# Testing
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+
+# Genetic reconstruction
+scikit-learn>=1.3.0
+scipy>=1.11.0
+
+# Observability
+opentelemetry-api>=1.20.0
+opentelemetry-sdk>=1.20.0
+opentelemetry-instrumentation>=0.41b0

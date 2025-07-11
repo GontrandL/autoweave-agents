@@ -1,0 +1,39 @@
+# Dependencies
+node_modules/
+venv/
+__pycache__/
+*.pyc
+.env
+
+# Generated files
+src/integration-agent/generated-models/*
+!src/integration-agent/generated-models/.gitkeep
+
+# Logs
+*.log
+logs/
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Python
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+
+# Temporary files
+*.tmp
+*.bak
+*~
